@@ -84,6 +84,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: site.name },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:image", content: "https://lamdonschool.vercel.app/images/lamdon-hero.jpg" },
+      { name: "twitter:image", content: "https://lamdonschool.vercel.app/images/lamdon-hero.jpg" },
       { name: "theme-color", content: "#26282e" },
     ],
     links: [

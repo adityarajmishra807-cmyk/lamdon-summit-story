@@ -39,10 +39,10 @@ export const Route = createFileRoute("/")({
         content:
           "A school in the Zanskar valley of Ladakh, India. From 53 children in two monastery rooms to a bioclimatic campus at 3,600 metres.",
       },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: "https://lamdonschool.vercel.app/" },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: "https://lamdonschool.vercel.app/" }],
   }),
   component: Home,
 });
