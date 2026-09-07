@@ -1,12 +1,18 @@
 import type { ImageCategory, ManagedImage } from "./types";
 
-import studentsLine from "@/assets/students-line.jpg.asset.json";
-import stupaLmhs from "@/assets/zanskar-stupa-lmhs.jpg.asset.json";
-import family from "@/assets/zanskar-family.jpg.asset.json";
-import winter from "@/assets/zanskar-winter.jpg.asset.json";
-import frisbee from "@/assets/students-frisbee.jpg.asset.json";
-import valleyRoad from "@/assets/zanskar-valley-road.jpg.asset.json";
-import sportsWall from "@/assets/students-sports-wall.jpg.asset.json";
+/**
+ * Photographs live in `public/images/` and are referenced by absolute,
+ * lowercase, URL-safe paths so they resolve identically in local development
+ * and on any static host. To swap in a high-resolution original, replace the
+ * file in `public/images/` keeping the same filename.
+ */
+const studentsLine = { url: "/images/students-01.jpg" };
+const stupaLmhs = { url: "/images/lamdon-hero.jpg" };
+const family = { url: "/images/zanskar-family.jpg" };
+const winter = { url: "/images/zanskar-winter.jpg" };
+const frisbee = { url: "/images/students-02.jpg" };
+const valleyRoad = { url: "/images/zanskar-valley.jpg" };
+const sportsWall = { url: "/images/sports.jpg" };
 
 /**
  * The initial visual library: the seven photographs supplied by the school.
