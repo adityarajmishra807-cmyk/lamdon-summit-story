@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prayer to the Mountains</title>
+  <meta name="description" content="Write a quiet prayer and release it into a living waterfall of wishes beneath the mountains.">
+  <meta property="og:title" content="Prayer to the Mountains">
+  <meta property="og:description" content="Write a quiet prayer and release it into a living waterfall of wishes beneath the mountains.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sky-top: #0b1020;
+      --sky-mid: #1c2741;
+      --sky-bottom: #3a4a6e;
+      --mist: rgba(226, 232, 240, 0.12);
+      --accent: #c9a25c;
+      --accent-glow: rgba(201, 162, 92, 0.45);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; overflow: hidden; }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(ellipse at 50% 0%, var(--sky-mid) 0%, transparent 60%),
+        linear-gradient(180deg, var(--sky-top) 0%, var(--sky-bottom) 100%);
+      color: #f1f5f9;
+    }
+
+    .font-display { font-family: 'Cinzel', serif; }
+
+    /* Stars */
+    .stars {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 50px 80px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 130px 60px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 250px 120px, rgba(255,255,255,0.5), transparent),
+        radial-gradient(2px 2px at 320px 40px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 400px 90px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 520px 20px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 600px 70px, rgba(255,255,255,0.5), transparent),
+        radial-gradient(2px 2px at 720px 30px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 800px 100px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 900px 50px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 1000px 110px, rgba(255,255,255,0.5), transparent),
+        radial-gradient(2px 2px at 1100px 25px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 1200px 85px, rgba(255,255,255,0.6), transparent);
+      background-size: 1200px 150px;
+      opacity: 0.6;
+    }
+
+    /* Mountain silhouettes */
+    .mountains {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .mountains svg {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Mist layers */
+    .mist {
+      position: absolute;
+      left: -10%;
+      right: -10%;
+      height: 220px;
+      background: linear-gradient(to bottom, transparent, var(--mist), transparent);
+      filter: blur(44px);
+      opacity: 0.35;
+      animation: drift 22s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+    .mist:nth-child(1) { bottom: 18%; animation-duration: 26s; opacity: 0.28; }
+    .mist:nth-child(2) { bottom: 28%; animation-duration: 32s; opacity: 0.22; }
+    .mist:nth-child(3) { bottom: 8%; animation-duration: 20s; opacity: 0.3; }
+    @keyframes drift {
+      from { transform: translateX(-6%); }
+      to { transform: translateX(6%); }
+    }
+
+    /* Waterfall */
+    #waterfall {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      perspective: 1200px;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .prayer {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      max-width: 260px;
+      padding: 0.55rem 0.95rem;
+      border-radius: 14px;
+      font-size: 0.85rem;
+      line-height: 1.35;
+      letter-spacing: 0.01em;
+      text-align: center;
+      color: rgba(241, 245, 249, 0.92);
+      background: rgba(15, 23, 42, 0.34);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      transform-style: preserve-3d;
+      will-change: transform, opacity;
+      --start-x: 0px;
+      --mid-x: 0px;
+      --end-x: 0px;
+      --stop-y: 90vh;
+      --start-rot: 0deg;
+      --mid-rot: 0deg;
+      --end-rot: 0deg;
+      --z: 0px;
+      --max-opacity: 0.8;
+      animation: fallAndSettle 11s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    }
+
+    .prayer.user {
+      color: #fff;
+      background: rgba(201, 162, 92, 0.16);
+      border-color: rgba(201, 162, 92, 0.55);
+      box-shadow: 0 0 34px var(--accent-glow), 0 4px 24px rgba(0,0,0,0.22);
+      font-weight: 500;
+      z-index: 5;
+    }
+
+    @keyframes fallAndSettle {
+      0% {
+        transform: translate3d(calc(-50% + var(--start-x)), -12vh, var(--z)) rotate(var(--start-rot));
+        opacity: 0;
+      }
+      7% {
+        opacity: var(--max-opacity);
+      }
+      74% {
+        transform: translate3d(calc(-50% + var(--mid-x)), var(--stop-y), var(--z)) rotate(var(--mid-rot));
+        opacity: var(--max-opacity);
+      }
+      100% {
+        transform: translate3d(calc(-50% + var(--end-x)), var(--stop-y), var(--z)) rotate(var(--end-rot));
+        opacity: 0.25;
+      }
+    }
+
+    /* Card */
+    .card {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 480px;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(11, 16, 32, 0.62);
+      backdrop-filter: blur(26px);
+      -webkit-backdrop-filter: blur(26px);
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.08);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+    }
+    .card.hidden {
+      opacity: 0;
+      transform: translateY(20px) scale(0.96);
+      pointer-events: none;
+    }
+    .card.releasing {
+      animation: cardRelease 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes cardRelease {
+      0% { transform: scale(1); opacity: 1; }
+      40% { transform: scale(1.02); opacity: 1; }
+      100% { transform: translateY(-45vh) scale(0.85); opacity: 0; }
+    }
+
+    textarea {
+      resize: none;
+      field-sizing: content;
+      min-height: 110px;
+      max-height: 220px;
+    }
+    textarea:focus { outline: none; }
+
+    .btn-primary {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--accent), #a8844a);
+      color: #0b1020;
+      font-weight: 600;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 30px rgba(201, 162, 92, 0.35);
+    }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-ghost {
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.05);
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.25);
+    }
+
+    .hint-enter {
+      animation: fadeInUp 0.6s ease forwards;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .prayer, .mist, .card, .stars { animation: none !important; }
+      .prayer { opacity: 0.7; transition: opacity 1.2s ease, transform 1.2s ease; }
+    }
+  </style>
+</head>
+<body class="antialiased">
+  <!-- Background layers -->
+  <div class="stars" aria-hidden="true"></div>
+  <div class="mountains" aria-hidden="true">
+    <svg preserveAspectRatio="none" viewBox="0 0 1200 320" aria-hidden="true">
+      <polygon points="0,320 240,140 420,320" fill="#162032" opacity="0.85"/>
+      <polygon points="320,320 560,70 800,320" fill="#111a2c" opacity="0.8"/>
+      <polygon points="640,320 920,110 1160,320" fill="#162032" opacity="0.85"/>
+      <polygon points="960,320 1120,150 1200,320" fill="#0d1423" opacity="0.8"/>
+    </svg>
+    <svg preserveAspectRatio="none" viewBox="0 0 1200 220" aria-hidden="true">
+      <polygon points="0,220 180,50 380,220" fill="#050a16" opacity="0.95"/>
+      <polygon points="280,220 520,10 760,220" fill="#080e1a" opacity="0.9"/>
+      <polygon points="620,220 880,60 1100,220" fill="#050a16" opacity="0.95"/>
+      <polygon points="940,220 1100,80 1200,220" fill="#080e1a" opacity="0.9"/>
+    </svg>
+  </div>
+  <div class="mist" aria-hidden="true"></div>
+  <div class="mist" aria-hidden="true"></div>
+  <div class="mist" aria-hidden="true"></div>
+
+  <!-- Living waterfall -->
+  <div id="waterfall" aria-hidden="true"></div>
+
+  <!-- Prayer card -->
+  <div class="absolute inset-0 z-10 flex items-center justify-center p-5" id="card-wrapper">
+    <div class="card p-8 md:p-10" id="card">
+      <h1 class="font-display text-2xl md:text-3xl font-medium text-center tracking-wide text-white">Prayer to the Mountains</h1>
+      <p class="mt-3 text-center text-sm text-slate-300/80">Write a quiet wish. Release it into the waterfall.</p>
+
+      <div class="mt-8">
+        <textarea
+          id="prayer-input"
+          class="w-full rounded-xl border border-slate-600/30 bg-slate-800/40 px-4 py-3 text-sm text-slate-100 placeholder-slate-400/70 focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)]/50"
+          placeholder="For the children of the valley... for safe passage... for the strength to climb..."
+          rows="4"
+          maxlength="180"
+          aria-label="Your prayer"
+        ></textarea>
+        <div class="mt-2 flex justify-between text-xs text-slate-500/80">
+          <span class="hidden sm:inline">Press Enter to release</span>
+          <span><span id="char-count">0</span>/180</span>
+        </div>
+      </div>
+
+      <button
+        id="release-btn"
+        class="btn-primary mt-5 w-full rounded-xl px-6 py-3.5 text-sm uppercase tracking-widest"
+        aria-label="Release prayer into the waterfall"
+      >
+        Release into the waterfall
+      </button>
+    </div>
+  </div>
+
+  <!-- Write another -->
+  <div class="absolute bottom-8 left-1/2 z-20 -translate-x-1/2 opacity-0 transition-opacity duration-500 pointer-events-none" id="controls">
+    <button
+      id="write-btn"
+      class="btn-ghost rounded-full px-6 py-3 text-sm tracking-wide text-slate-200"
+    >
+      Write another prayer
+    </button>
+  </div>
+
+  <script>
+    const waterfall = document.getElementById('waterfall');
+    const input = document.getElementById('prayer-input');
+    const releaseBtn = document.getElementById('release-btn');
+    const charCount = document.getElementById('char-count');
+    const card = document.getElementById('card');
+    const controls = document.getElementById('controls');
+    const writeBtn = document.getElementById('write-btn');
+
+    const seededPrayers = [
+      "May the passes stay open long enough for the children to return home.",
+      "Strength for the teachers who carry the school on their shoulders.",
+      "Let the winter be kind to the valley.",
+      "For the girl who walks two hours before dawn to reach class.",
+      "May the mountains hold every small dream safely.",
+      "Peace to the monastery, peace to the school, peace to the road.",
+      "Let the new campus grow roots deeper than the cold.",
+      "For every sponsor who has never seen the Himalayas but kept a child warm.",
+      "May the frisbee fly straight and the laughter be loud.",
+      "For the cook, the watchman, the driver, the unsung shoulders of the day.",
+      "Let the science lab become a room of questions answered.",
+      "May the old stones of Pibiting remember why this began.",
+      "For every child who learns to write their own name in three languages.",
+      "Let the rivers run clear and the prayers run clearer."
+    ];
+
+    let activePrayers = 0;
+    const maxPrayers = 90;
+    let spawnInterval;
+    let seedIndex = 0;
+
+    function randomRange(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function createPrayer(text, isUser = false) {
+      if (activePrayers >= maxPrayers) {
+        const oldest = waterfall.querySelector('.prayer');
+        if (oldest) {
+          oldest.remove();
+          activePrayers--;
+        }
+      }
+
+      const el = document.createElement('div');
+      el.className = 'prayer' + (isUser ? ' user' : '');
+      el.textContent = text;
+      el.setAttribute('aria-hidden', 'true');
+
+      const vw = window.innerWidth;
+      const startX = randomRange(-vw * 0.42, vw * 0.42);
+      const midX = startX + randomRange(-vw * 0.08, vw * 0.08);
+      const endX = midX + randomRange(-vw * 0.12, vw * 0.12);
+      const stopY = randomRange(76, 94) + 'vh';
+      const startRot = randomRange(-14, 14) + 'deg';
+      const midRot = randomRange(-7, 7) + 'deg';
+      const endRot = randomRange(-4, 4) + 'deg';
+      const z = randomRange(-320, 240) + 'px';
+      const maxOpacity = isUser ? 1 : randomRange(0.55, 0.9);
+      const duration = randomRange(isUser ? 7.5 : 9.5, isUser ? 11 : 17);
+      const size = isUser ? '0.95rem' : randomRange(0.72, 0.92) + 'rem';
+
+      el.style.setProperty('--start-x', startX + 'px');
+      el.style.setProperty('--mid-x', midX + 'px');
+      el.style.setProperty('--end-x', endX + 'px');
+      el.style.setProperty('--stop-y', stopY);
+      el.style.setProperty('--start-rot', startRot);
+      el.style.setProperty('--mid-rot', midRot);
+      el.style.setProperty('--end-rot', endRot);
+      el.style.setProperty('--z', z);
+      el.style.setProperty('--max-opacity', maxOpacity);
+      el.style.fontSize = size;
+      el.style.animationDuration = duration + 's';
+
+      waterfall.appendChild(el);
+      activePrayers++;
+
+      el.addEventListener('animationend', () => {
+        el.style.transition = 'opacity 4s ease';
+        el.style.opacity = '0';
+        setTimeout(() => {
+          if (el.parentNode) {
+            el.remove();
+            activePrayers--;
+          }
+        }, 4000);
+      });
+    }
+
+    function startSeededFlow() {
+      spawnInterval = setInterval(() => {
+        if (document.hidden) return;
+        createPrayer(seededPrayers[seedIndex % seededPrayers.length]);
+        seedIndex++;
+      }, 1500);
+    }
+
+    function releasePrayer() {
+      const text = input.value.trim();
+      if (!text) return;
+
+      card.classList.add('releasing');
+
+      setTimeout(() => {
+        createPrayer(text, true);
+
+        card.classList.remove('releasing');
+        card.classList.add('hidden');
+        controls.classList.remove('opacity-0', 'pointer-events-none');
+        controls.classList.add('opacity-100', 'pointer-events-auto');
+
+        input.value = '';
+        charCount.textContent = '0';
+      }, 650);
+    }
+
+    input.addEventListener('input', () => {
+      charCount.textContent = input.value.length;
+    });
+
+    releaseBtn.addEventListener('click', releasePrayer);
+
+    writeBtn.addEventListener('click', () => {
+      card.classList.remove('hidden');
+      controls.classList.remove('opacity-100', 'pointer-events-auto');
+      controls.classList.add('opacity-0', 'pointer-events-none');
+      setTimeout(() => input.focus(), 100);
+    });
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        releasePrayer();
+      }
+    });
+
+    // Initialize the scene
+    startSeededFlow();
+    for (let i = 0; i < 8; i++) {
+      setTimeout(() => {
+        createPrayer(seededPrayers[i % seededPrayers.length]);
+      }, i * 220);
+    }
+  </script>
+</body>
+</html>

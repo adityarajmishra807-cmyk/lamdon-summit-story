@@ -21,10 +21,10 @@ export const Route = createFileRoute("/partners")({
         content:
           "Architectes Sans Frontières, Atelier Tanka and the foundations recorded as project partners in AAZ's published material.",
       },
-      { property: "og:url", content: "/partners" },
+      { property: "og:url", content: "https://lamdonschool.vercel.app/partners" },
       { property: "og:type", content: "article" },
     ],
-    links: [{ rel: "canonical", href: "/partners" }],
+    links: [{ rel: "canonical", href: "https://lamdonschool.vercel.app/partners" }],
   }),
   component: Partners,
 });

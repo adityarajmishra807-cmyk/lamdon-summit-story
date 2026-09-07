@@ -24,10 +24,10 @@ export const Route = createFileRoute("/campus")({
         content:
           "Passive solar, insulation, solar energy and earthquake-resistant construction on a school campus in the Zanskar valley.",
       },
-      { property: "og:url", content: "/campus" },
+      { property: "og:url", content: "https://lamdonschool.vercel.app/campus" },
       { property: "og:type", content: "article" },
     ],
-    links: [{ rel: "canonical", href: "/campus" }],
+    links: [{ rel: "canonical", href: "https://lamdonschool.vercel.app/campus" }],
   }),
   component: Campus,
 });

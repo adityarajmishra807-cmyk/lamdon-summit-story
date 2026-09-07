@@ -24,10 +24,10 @@ export const Route = createFileRoute("/support/")({
         content:
           "Ways to support a school teaching LKG to Grade 10 at 3,600 metres in the Zanskar valley.",
       },
-      { property: "og:url", content: "/support" },
+      { property: "og:url", content: "https://lamdonschool.vercel.app/support" },
       { property: "og:type", content: "article" },
     ],
-    links: [{ rel: "canonical", href: "/support" }],
+    links: [{ rel: "canonical", href: "https://lamdonschool.vercel.app/support" }],
   }),
   component: Support,
 });

@@ -24,10 +24,10 @@ export const Route = createFileRoute("/academics")({
         content:
           "Eight subjects and three languages, taught to the Indian national curriculum in the Zanskar valley.",
       },
-      { property: "og:url", content: "/academics" },
+      { property: "og:url", content: "https://lamdonschool.vercel.app/academics" },
       { property: "og:type", content: "article" },
     ],
-    links: [{ rel: "canonical", href: "/academics" }],
+    links: [{ rel: "canonical", href: "https://lamdonschool.vercel.app/academics" }],
   }),
   component: Academics,
 });

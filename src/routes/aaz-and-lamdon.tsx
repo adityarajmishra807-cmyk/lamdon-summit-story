@@ -22,10 +22,10 @@ export const Route = createFileRoute("/aaz-and-lamdon")({
         content:
           "How the school and its French supporting association relate, and why historical material on this site is attributed to AAZ.",
       },
-      { property: "og:url", content: "/aaz-and-lamdon" },
+      { property: "og:url", content: "https://lamdonschool.vercel.app/aaz-and-lamdon" },
       { property: "og:type", content: "article" },
     ],
-    links: [{ rel: "canonical", href: "/aaz-and-lamdon" }],
+    links: [{ rel: "canonical", href: "https://lamdonschool.vercel.app/aaz-and-lamdon" }],
   }),
   component: AazAndLamdon,
 });
