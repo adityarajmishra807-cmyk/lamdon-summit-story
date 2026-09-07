@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, type LinkProps } from "@tanstack/react-router";
 import { useRef, useState, type MouseEvent, type ReactNode } from "react";
 import { useMotionProfile } from "@/hooks/use-motion-profile";
 import { cn } from "@/lib/utils";
@@ -27,7 +27,7 @@ export function Action({
   className,
   arrow = true,
 }: {
-  to?: string;
+  to?: LinkProps["to"];
   href?: string;
   children: ReactNode;
   variant?: Variant;
