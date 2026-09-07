@@ -10,13 +10,28 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AazAndLamdonRouteImport } from './routes/aaz-and-lamdon'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AcademicsRouteImport } from './routes/academics'
 import { Route as CampusRouteImport } from './routes/campus'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as PartnersRouteImport } from './routes/partners'
+import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as StudentLifeRouteImport } from './routes/student-life'
+import { Route as SupportRouteImport } from './routes/support'
+import { Route as ZanskarRouteImport } from './routes/zanskar'
+import { Route as SupportIndexRouteImport } from './routes/support.index'
+import { Route as SupportSponsorAChildRouteImport } from './routes/support.sponsor-a-child'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AazAndLamdonRoute = AazAndLamdonRouteImport.update({
+  id: '/aaz-and-lamdon',
+  path: '/aaz-and-lamdon',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -34,39 +49,163 @@ const CampusRoute = CampusRouteImport.update({
   path: '/campus',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersRoute = PartnersRouteImport.update({
+  id: '/partners',
+  path: '/partners',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudentLifeRoute = StudentLifeRouteImport.update({
+  id: '/student-life',
+  path: '/student-life',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SupportRoute = SupportRouteImport.update({
+  id: '/support',
+  path: '/support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZanskarRoute = ZanskarRouteImport.update({
+  id: '/zanskar',
+  path: '/zanskar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SupportIndexRoute = SupportIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => SupportRoute,
+} as any)
+const SupportSponsorAChildRoute = SupportSponsorAChildRouteImport.update({
+  id: '/sponsor-a-child',
+  path: '/sponsor-a-child',
+  getParentRoute: () => SupportRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/aaz-and-lamdon': typeof AazAndLamdonRoute
   '/about': typeof AboutRoute
   '/academics': typeof AcademicsRoute
   '/campus': typeof CampusRoute
+  '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
+  '/partners': typeof PartnersRoute
+  '/reports': typeof ReportsRoute
+  '/student-life': typeof StudentLifeRoute
+  '/support': typeof SupportRouteWithChildren
+  '/zanskar': typeof ZanskarRoute
+  '/support/sponsor-a-child': typeof SupportSponsorAChildRoute
+  '/support/': typeof SupportIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/aaz-and-lamdon': typeof AazAndLamdonRoute
   '/about': typeof AboutRoute
   '/academics': typeof AcademicsRoute
   '/campus': typeof CampusRoute
+  '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
+  '/partners': typeof PartnersRoute
+  '/reports': typeof ReportsRoute
+  '/student-life': typeof StudentLifeRoute
+  '/zanskar': typeof ZanskarRoute
+  '/support/sponsor-a-child': typeof SupportSponsorAChildRoute
+  '/support': typeof SupportIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/aaz-and-lamdon': typeof AazAndLamdonRoute
   '/about': typeof AboutRoute
   '/academics': typeof AcademicsRoute
   '/campus': typeof CampusRoute
+  '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
+  '/partners': typeof PartnersRoute
+  '/reports': typeof ReportsRoute
+  '/student-life': typeof StudentLifeRoute
+  '/support': typeof SupportRouteWithChildren
+  '/zanskar': typeof ZanskarRoute
+  '/support/sponsor-a-child': typeof SupportSponsorAChildRoute
+  '/support/': typeof SupportIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/academics' | '/campus'
+  fullPaths:
+    | '/'
+    | '/aaz-and-lamdon'
+    | '/about'
+    | '/academics'
+    | '/campus'
+    | '/contact'
+    | '/gallery'
+    | '/partners'
+    | '/reports'
+    | '/student-life'
+    | '/support'
+    | '/zanskar'
+    | '/support/sponsor-a-child'
+    | '/support/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/academics' | '/campus'
-  id: '__root__' | '/' | '/about' | '/academics' | '/campus'
+  to:
+    | '/'
+    | '/aaz-and-lamdon'
+    | '/about'
+    | '/academics'
+    | '/campus'
+    | '/contact'
+    | '/gallery'
+    | '/partners'
+    | '/reports'
+    | '/student-life'
+    | '/zanskar'
+    | '/support/sponsor-a-child'
+    | '/support'
+  id:
+    | '__root__'
+    | '/'
+    | '/aaz-and-lamdon'
+    | '/about'
+    | '/academics'
+    | '/campus'
+    | '/contact'
+    | '/gallery'
+    | '/partners'
+    | '/reports'
+    | '/student-life'
+    | '/support'
+    | '/zanskar'
+    | '/support/sponsor-a-child'
+    | '/support/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AazAndLamdonRoute: typeof AazAndLamdonRoute
   AboutRoute: typeof AboutRoute
   AcademicsRoute: typeof AcademicsRoute
   CampusRoute: typeof CampusRoute
+  ContactRoute: typeof ContactRoute
+  GalleryRoute: typeof GalleryRoute
+  PartnersRoute: typeof PartnersRoute
+  ReportsRoute: typeof ReportsRoute
+  StudentLifeRoute: typeof StudentLifeRoute
+  SupportRoute: typeof SupportRouteWithChildren
+  ZanskarRoute: typeof ZanskarRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -76,6 +215,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/aaz-and-lamdon': {
+      id: '/aaz-and-lamdon'
+      path: '/aaz-and-lamdon'
+      fullPath: '/aaz-and-lamdon'
+      preLoaderRoute: typeof AazAndLamdonRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -99,14 +245,98 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CampusRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partners': {
+      id: '/partners'
+      path: '/partners'
+      fullPath: '/partners'
+      preLoaderRoute: typeof PartnersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/student-life': {
+      id: '/student-life'
+      path: '/student-life'
+      fullPath: '/student-life'
+      preLoaderRoute: typeof StudentLifeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/support': {
+      id: '/support'
+      path: '/support'
+      fullPath: '/support'
+      preLoaderRoute: typeof SupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zanskar': {
+      id: '/zanskar'
+      path: '/zanskar'
+      fullPath: '/zanskar'
+      preLoaderRoute: typeof ZanskarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/support/': {
+      id: '/support/'
+      path: '/'
+      fullPath: '/support/'
+      preLoaderRoute: typeof SupportIndexRouteImport
+      parentRoute: typeof SupportRoute
+    }
+    '/support/sponsor-a-child': {
+      id: '/support/sponsor-a-child'
+      path: '/sponsor-a-child'
+      fullPath: '/support/sponsor-a-child'
+      preLoaderRoute: typeof SupportSponsorAChildRouteImport
+      parentRoute: typeof SupportRoute
+    }
   }
 }
 
+interface SupportRouteChildren {
+  SupportSponsorAChildRoute: typeof SupportSponsorAChildRoute
+  SupportIndexRoute: typeof SupportIndexRoute
+}
+
+const SupportRouteChildren: SupportRouteChildren = {
+  SupportSponsorAChildRoute: SupportSponsorAChildRoute,
+  SupportIndexRoute: SupportIndexRoute,
+}
+
+const SupportRouteWithChildren =
+  SupportRoute._addFileChildren(SupportRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AazAndLamdonRoute: AazAndLamdonRoute,
   AboutRoute: AboutRoute,
   AcademicsRoute: AcademicsRoute,
   CampusRoute: CampusRoute,
+  ContactRoute: ContactRoute,
+  GalleryRoute: GalleryRoute,
+  PartnersRoute: PartnersRoute,
+  ReportsRoute: ReportsRoute,
+  StudentLifeRoute: StudentLifeRoute,
+  SupportRoute: SupportRouteWithChildren,
+  ZanskarRoute: ZanskarRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

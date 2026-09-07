@@ -10,6 +10,8 @@ interface RevealProps {
   /** Wipe the element in from below its own edge instead of fading up. */
   mask?: boolean;
   once?: boolean;
+  /** First-screen content: reveal on mount rather than on scroll. */
+  immediate?: boolean;
 }
 
 /**
@@ -19,16 +21,24 @@ interface RevealProps {
  */
 export function Reveal({
   children,
-  as: Tag = "div",
+  as = "div",
   className,
   delay = 0,
   mask = false,
   once = true,
+  immediate = false,
 }: RevealProps) {
-  const ref = useRef<HTMLElement>(null);
+  // Polymorphic tag. Narrowed to a div's prop signature: every call site passes
+  // only className, style, ref and children, which every element accepts.
+  const Tag = as as unknown as "div";
+  const ref = useRef<HTMLDivElement>(null);
   const [shown, setShown] = useState(false);
 
   useEffect(() => {
+    if (immediate) {
+      const raf = requestAnimationFrame(() => setShown(true));
+      return () => cancelAnimationFrame(raf);
+    }
     const el = ref.current;
     if (!el) return;
     if (typeof IntersectionObserver === "undefined") {
@@ -49,8 +59,20 @@ export function Reveal({
       { rootMargin: "0px 0px -12% 0px", threshold: 0.08 },
     );
     io.observe(el);
-    return () => io.disconnect();
-  }, [once]);
+
+    // Safety net: anything already inside the viewport once images and fonts
+    // have settled is shown regardless, so a first screen never stays blank if
+    // the observer's first callback landed before layout was final.
+    const settle = window.setTimeout(() => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) setShown(true);
+    }, 900);
+
+    return () => {
+      window.clearTimeout(settle);
+      io.disconnect();
+    };
+  }, [once, immediate]);
 
   return (
     <Tag

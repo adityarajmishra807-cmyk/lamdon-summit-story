@@ -210,6 +210,18 @@
   clip-path: inset(0 0 0 0);
 }
 
+/* Without JavaScript nothing can trigger a reveal, so nothing stays hidden. */
+@media (scripting: none) {
+  .reveal-base {
+    opacity: 1;
+    transform: none;
+  }
+
+  .mask-reveal {
+    clip-path: none;
+  }
+}
+
 @keyframes drift {
   0% {
     transform: translate3d(-3%, 0, 0) scale(1.04);
@@ -253,7 +265,11 @@
   border-top: 1px solid var(--color-border);
 }
 
-@utility grain::after {
+@utility grain {
+  position: relative;
+}
+
+.grain::after {
   content: "";
   position: absolute;
   inset: 0;

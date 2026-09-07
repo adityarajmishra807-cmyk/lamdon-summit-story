@@ -126,7 +126,7 @@ export const reports: Report[] = reportYears.map((year) => ({
   title: `Rapport d'été ${year}`,
   summary:
     "An illustrated report of the work carried out at Lamdon by AAZ members on their summer mission to the school.",
-  fileUrl: reportFiles[year],
+  ...(reportFiles[year] ? { fileUrl: reportFiles[year]! } : {}),
   language: "French",
   source: "AAZ summer report archive",
   sourceUrl: AAZ_DOWNLOADS,
