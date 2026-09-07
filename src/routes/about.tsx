@@ -24,10 +24,10 @@ export const Route = createFileRoute("/about")({
         content:
           "The history, purpose and academic record of Lamdon Model High School in the Zanskar valley, Ladakh.",
       },
-      { property: "og:url", content: "/about" },
+      { property: "og:url", content: "https://lamdonschool.vercel.app/about" },
       { property: "og:type", content: "article" },
     ],
-    links: [{ rel: "canonical", href: "/about" }],
+    links: [{ rel: "canonical", href: "https://lamdonschool.vercel.app/about" }],
   }),
   component: About,
 });

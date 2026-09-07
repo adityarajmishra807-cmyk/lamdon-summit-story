@@ -21,10 +21,10 @@ export const Route = createFileRoute("/gallery")({
         property: "og:description",
         content: "A photographic archive of a school in the Zanskar valley, Ladakh.",
       },
-      { property: "og:url", content: "/gallery" },
+      { property: "og:url", content: "https://lamdonschool.vercel.app/gallery" },
       { property: "og:type", content: "article" },
     ],
-    links: [{ rel: "canonical", href: "/gallery" }],
+    links: [{ rel: "canonical", href: "https://lamdonschool.vercel.app/gallery" }],
   }),
   component: Gallery,
 });

@@ -20,10 +20,10 @@ export const Route = createFileRoute("/student-life")({
         content:
           "A photographic record of daily life at a school in the Zanskar valley, Ladakh.",
       },
-      { property: "og:url", content: "/student-life" },
+      { property: "og:url", content: "https://lamdonschool.vercel.app/student-life" },
       { property: "og:type", content: "article" },
     ],
-    links: [{ rel: "canonical", href: "/student-life" }],
+    links: [{ rel: "canonical", href: "https://lamdonschool.vercel.app/student-life" }],
   }),
   component: StudentLife,
 });

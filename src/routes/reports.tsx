@@ -22,10 +22,10 @@ export const Route = createFileRoute("/reports")({
         content:
           "AAZ's summer mission reports on the school in Zanskar, 2008 to 2023, in French.",
       },
-      { property: "og:url", content: "/reports" },
+      { property: "og:url", content: "https://lamdonschool.vercel.app/reports" },
       { property: "og:type", content: "article" },
     ],
-    links: [{ rel: "canonical", href: "/reports" }],
+    links: [{ rel: "canonical", href: "https://lamdonschool.vercel.app/reports" }],
   }),
   component: Reports,
 });

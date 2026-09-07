@@ -24,10 +24,10 @@ export const Route = createFileRoute("/zanskar")({
         content:
           "Geography, climate, farming and Buddhist culture in the Zanskar valley, and what they mean for a school.",
       },
-      { property: "og:url", content: "/zanskar" },
+      { property: "og:url", content: "https://lamdonschool.vercel.app/zanskar" },
       { property: "og:type", content: "article" },
     ],
-    links: [{ rel: "canonical", href: "/zanskar" }],
+    links: [{ rel: "canonical", href: "https://lamdonschool.vercel.app/zanskar" }],
   }),
   component: Zanskar,
 });

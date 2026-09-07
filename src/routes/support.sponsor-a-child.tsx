@@ -23,10 +23,10 @@ export const Route = createFileRoute("/support/sponsor-a-child")({
         content:
           "Annual sponsorship following one student's schooling in the Zanskar valley, administered by AAZ.",
       },
-      { property: "og:url", content: "/support/sponsor-a-child" },
+      { property: "og:url", content: "https://lamdonschool.vercel.app/support/sponsor-a-child" },
       { property: "og:type", content: "article" },
     ],
-    links: [{ rel: "canonical", href: "/support/sponsor-a-child" }],
+    links: [{ rel: "canonical", href: "https://lamdonschool.vercel.app/support/sponsor-a-child" }],
   }),
   component: SponsorAChild,
 });

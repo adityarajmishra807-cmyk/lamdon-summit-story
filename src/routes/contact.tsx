@@ -21,10 +21,10 @@ export const Route = createFileRoute("/contact")({
         property: "og:description",
         content: "How to reach the school and its supporting association.",
       },
-      { property: "og:url", content: "/contact" },
+      { property: "og:url", content: "https://lamdonschool.vercel.app/contact" },
       { property: "og:type", content: "article" },
     ],
-    links: [{ rel: "canonical", href: "/contact" }],
+    links: [{ rel: "canonical", href: "https://lamdonschool.vercel.app/contact" }],
   }),
   component: Contact,
 });
