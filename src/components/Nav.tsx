@@ -55,7 +55,7 @@ export function Nav() {
               <Link
                 key={item.to}
                 to={item.to}
-                className="eyebrow relative text-on-dark-muted transition-colors duration-300 hover:text-on-dark"
+                className="eyebrow relative whitespace-nowrap text-on-dark-muted transition-colors duration-300 hover:text-on-dark"
                 activeProps={{ className: "text-on-dark" }}
               >
                 {item.label}
