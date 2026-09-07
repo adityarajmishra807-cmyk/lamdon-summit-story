@@ -32,10 +32,14 @@ export function Photo({
   sizes = "100vw",
   drift = false,
 }: PhotoProps) {
-  const frame = useRef<HTMLDivElement>(null);
+  // The observer sits on the outer figure, not the clipped frame: a target
+  // carrying clip-path never reports an intersection while it is masked shut.
+  const frame = useRef<HTMLElement>(null);
   const [offset, setOffset] = useState(0);
   const [loaded, setLoaded] = useState(false);
-  const [revealed, setRevealed] = useState(false);
+  // Priority frames (page openings) are above the fold: mask them open at once
+  // so a slow hydration never leaves the opening scene dark.
+  const [revealed, setRevealed] = useState(priority);
   const { reducedMotion, compact, hydrated } = useMotionProfile();
   const parallaxOn = parallax !== 0 && hydrated && !reducedMotion && !compact;
 
@@ -74,9 +78,8 @@ export function Photo({
   }, [parallaxOn, parallax]);
 
   return (
-    <figure className={cn("group relative", className)}>
+    <figure ref={frame} className={cn("group relative", className)}>
       <div
-        ref={frame}
         className={cn(
           "relative h-full w-full overflow-hidden bg-secondary",
           "mask-reveal",

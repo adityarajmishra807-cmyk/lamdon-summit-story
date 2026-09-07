@@ -109,9 +109,10 @@ function Ridge({ segments, tone }: { segments: number; tone: Tone }) {
     const max = Math.max(1, doc.scrollHeight - window.innerHeight);
     const target = window.scrollY / max;
     scroll.current += (target - scroll.current) * Math.min(1, delta * 3.2);
-    if (mat.current) {
-      mat.current.uniforms.uTime.value = state.clock.elapsedTime;
-      mat.current.uniforms.uScroll.value = scroll.current;
+    const uniforms = mat.current?.uniforms;
+    if (uniforms) {
+      if (uniforms["uTime"]) uniforms["uTime"].value = state.clock.elapsedTime;
+      if (uniforms["uScroll"]) uniforms["uScroll"].value = scroll.current;
     }
     state.camera.position.y = -34 + scroll.current * 6;
     state.camera.position.z = 15 - scroll.current * 3.5;

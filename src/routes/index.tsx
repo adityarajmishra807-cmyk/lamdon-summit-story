@@ -58,35 +58,35 @@ function Home() {
             priority
             drift
             className="h-full w-full"
-            imgClassName="opacity-60"
+            imgClassName="opacity-80"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-charcoal/85 via-charcoal/55 to-charcoal" />
+          <div className="absolute inset-0 bg-gradient-to-b from-charcoal/65 via-charcoal/35 to-charcoal/90" />
         </div>
-        <Terrain variant="dark" className="-z-10 opacity-80" />
+        <Terrain variant="dark" className="-z-10 opacity-30" />
 
         <div className="mx-auto flex w-full max-w-[1600px] flex-1 flex-col justify-end px-6 pb-14 pt-40 md:px-10 md:pb-20">
-          <Reveal>
+          <Reveal immediate>
             <p className="eyebrow text-ochre">
               {site.name} <span className="mx-3 text-on-dark/30">/</span> Zanskar, Ladakh
             </p>
           </Reveal>
 
-          <Reveal delay={120}>
+          <Reveal immediate delay={120}>
             <h1 className="display-xl mt-8 max-w-[16ch] text-on-dark">
               Education at the roof of the Himalayas
             </h1>
           </Reveal>
 
           <div className="mt-12 flex flex-col gap-10 border-t border-on-dark/12 pt-9 md:flex-row md:items-end md:justify-between">
-            <Reveal delay={220}>
+            <Reveal immediate delay={220}>
               <p className="lede max-w-[38ch] text-on-dark-muted">
                 Education rooted in Zanskar.
                 <br />
                 Opportunity reaching beyond the mountains.
               </p>
             </Reveal>
-            <Reveal delay={300} className="flex flex-wrap items-center gap-4">
+            <Reveal immediate delay={300} className="flex flex-wrap items-center gap-4">
               <Action to="/about" variant="onDark">
                 Explore Lamdon
               </Action>
@@ -130,7 +130,7 @@ function Home() {
                   </p>
                 </div>
               </Reveal>
-              <Reveal delay={220}>
+              <Reveal immediate delay={220}>
                 <div className="mt-10">
                   <Action to="/zanskar" variant="onDark">
                     The land we call home
@@ -139,7 +139,7 @@ function Home() {
               </Reveal>
             </div>
 
-            <Reveal delay={120}>
+            <Reveal immediate delay={120}>
               <ZanskarMap />
             </Reveal>
           </div>
@@ -284,7 +284,7 @@ function Home() {
               <SourceNote data={schoolFacts[0]!} className="mt-10" />
             </div>
 
-            <Reveal delay={120}>
+            <Reveal immediate delay={120}>
               <Photo
                 image={img("frisbee")}
                 caption
@@ -418,7 +418,7 @@ function Home() {
             </Reveal>
           </div>
 
-          <Reveal delay={120}>
+          <Reveal immediate delay={120}>
             <div className="prose-editorial mt-16">
               <p>{results.body}</p>
               <p className="text-sm text-muted-foreground">{results.claim}</p>
